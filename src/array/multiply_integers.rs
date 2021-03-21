@@ -6,11 +6,7 @@ pub fn multiply(a: &[i32], b: &[i32]) -> Vec<i32> {
         let mut accumulator = 0;
 
         let skip_val = std::cmp::max(0, i as isize - a.len() as isize) as usize;
-        for (index_a, digit_b) in (0..i)
-            .rev()
-            .zip(b.iter())
-            .skip(skip_val)
-        {
+        for (index_a, digit_b) in (0..i).rev().zip(b.iter()).skip(skip_val) {
             accumulator += digit_b.abs() * a[index_a].abs();
         }
 

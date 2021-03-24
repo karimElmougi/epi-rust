@@ -5,3 +5,4 @@ pub mod increment_integer;
 pub mod multiply_integers;
 pub mod permutate;
 pub mod remove_duplicate;
+pub mod sample;

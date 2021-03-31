@@ -6,3 +6,4 @@ pub mod multiply_integers;
 pub mod permutate;
 pub mod remove_duplicate;
 pub mod sample;
+pub mod random_subset;

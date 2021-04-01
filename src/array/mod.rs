@@ -8,3 +8,4 @@ pub mod remove_duplicate;
 pub mod sample;
 pub mod random_subset;
 pub mod check_sudoku;
+pub mod spiral_order;

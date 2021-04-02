@@ -9,19 +9,19 @@ pub fn random_subset_naive(n: usize, k: usize) -> Vec<usize> {
     while set.len() != k {
         set.insert(rng.gen_range(0..n));
     }
-    
+
     set.into_iter().collect()
 }
 
 pub fn random_subset_less_naive(n: usize, k: usize) -> Vec<usize> {
     let mut v = (0..n).collect::<Vec<_>>();
     let mut rng = rand::thread_rng();
-    
+
     for i in 0..k {
         let rand_i = rng.gen_range(i..v.len());
         v.swap(i, rand_i);
     }
-    
+
     v.resize(k, 0);
     v
 }

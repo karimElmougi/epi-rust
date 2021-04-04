@@ -5,7 +5,7 @@ pub fn replace_and_remove(s: &str) -> String {
         match c {
             'a' => result += "dd",
             'b' => continue,
-            _ => result.push(c)
+            _ => result.push(c),
         }
     }
 
@@ -13,10 +13,10 @@ pub fn replace_and_remove(s: &str) -> String {
 }
 
 pub fn replace_and_remove_in_place(s: &mut str, size: usize) {
-    let size = remove_b(unsafe{ s.as_bytes_mut() }, size);
+    let size = remove_b(unsafe { s.as_bytes_mut() }, size);
     let final_size = size + s.chars().filter(|&c| c == 'a').count();
     let mut insertion_i = final_size;
-    let bytes = unsafe{ s.as_bytes_mut() };
+    let bytes = unsafe { s.as_bytes_mut() };
 
     for i in (0..size).rev() {
         if bytes[i] == 'a' as u8 {
@@ -24,8 +24,7 @@ pub fn replace_and_remove_in_place(s: &mut str, size: usize) {
             bytes[insertion_i] = 'd' as u8;
             insertion_i -= 1;
             bytes[insertion_i] = 'd' as u8;
-        }
-        else {
+        } else {
             insertion_i -= 1;
             bytes[insertion_i] = bytes[i];
         }
@@ -39,8 +38,7 @@ pub fn remove_b(s: &mut [u8], size: usize) -> usize {
     for i in 0..size {
         if s[i] == 'b' as u8 {
             new_size -= 1;
-        }
-        else {
+        } else {
             s.swap(insertion_i, i);
             insertion_i += 1;
         }

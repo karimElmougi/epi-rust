@@ -5,3 +5,4 @@ pub mod phone_mnemonics;
 pub mod replace_and_remove;
 pub mod reverse_words;
 pub mod roman;
+pub mod snake;

@@ -1,10 +1,3 @@
 pub mod array;
+pub mod linked_list;
 pub mod string;
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}

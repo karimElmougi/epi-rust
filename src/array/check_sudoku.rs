@@ -1,9 +1,8 @@
 pub fn check(array: &[[i32; 9]; 9]) -> bool {
     // check rows
-    for line in 0..9 {
+    for line in array.iter().take(9) {
         let mut set = 0u16;
-        for col in 0..9 {
-            let val = array[line][col];
+        for val in line.iter().take(9) {
             let bit = 1 << val;
             let is_present = (set & bit) != 0;
             match (val, is_present) {
@@ -15,10 +14,9 @@ pub fn check(array: &[[i32; 9]; 9]) -> bool {
     }
 
     // check columns
-    for col in 0..9 {
+    for col in array.iter().take(9) {
         let mut set = 0u16;
-        for line in 0..9 {
-            let val = array[line][col];
+        for val in col.iter().take(9) {
             let bit = 1 << val;
             let is_present = (set & bit) != 0;
             match (val, is_present) {
@@ -32,11 +30,10 @@ pub fn check(array: &[[i32; 9]; 9]) -> bool {
     // check squares
     // TODO: Maybe clean this up, couldn't be arsed
     for line_limit in (3..9).step_by(3) {
-        for line in line_limit - 3..line_limit {
+        for line in array.iter().take(line_limit).skip(line_limit - 3) {
             let mut set = 0u16;
             for col_limit in (3..9).step_by(3) {
-                for col in col_limit - 3..col_limit {
-                    let val = array[line][col];
+                for val in line.iter().take(col_limit).skip(col_limit - 3) {
                     let bit = 1 << val;
                     let is_present = (set & bit) != 0;
                     match (val, is_present) {

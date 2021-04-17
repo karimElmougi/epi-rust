@@ -22,8 +22,8 @@ where
 }
 
 impl<T> Node<T> {
-    fn wrap(node: Self) -> Option<Rc<RefCell<Self>>> {
-        Some(Rc::new(RefCell::new(node)))
+    fn wrap(node: Self) -> Rc<RefCell<Self>> {
+        Rc::new(RefCell::new(node))
     }
 
     pub fn insert_after(&mut self, elem: T) {
@@ -31,7 +31,7 @@ impl<T> Node<T> {
             elem,
             next: self.next.clone(),
         };
-        self.next = Self::wrap(new_node);
+        self.next = Some(Self::wrap(new_node));
     }
 
     pub fn delete_next(&mut self) {
@@ -56,10 +56,10 @@ impl<T> LinkedList<T> {
     }
 
     pub fn push_front(&mut self, elem: T) {
-        self.head = Node::wrap(Node {
+        self.head = Some(Node::wrap(Node {
             elem,
             next: self.head.clone(),
-        });
+        }));
     }
 
     pub fn pop_front(&mut self) -> Option<Rc<RefCell<Node<T>>>> {
@@ -70,8 +70,13 @@ impl<T> LinkedList<T> {
             .and_then(|n| n.as_ref().borrow().next.clone());
         old_head
     }
+}
 
-    pub fn into_iter(self) -> IntoIter<T> {
+impl<T> IntoIterator for LinkedList<T> {
+    type Item = Rc<RefCell<Node<T>>>;
+    type IntoIter = IntoIter<T>;
+
+    fn into_iter(self) -> Self::IntoIter {
         IntoIter(self)
     }
 }

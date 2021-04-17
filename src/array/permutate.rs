@@ -12,7 +12,7 @@ pub fn permutate_naive(a: &[char], p: &[usize]) -> Vec<char> {
 pub fn permutate_linear(a: &[char], p: &[usize]) -> Vec<char> {
     let mut vec = (0..a.len()).map(|_| '\0').collect::<Vec<_>>();
 
-    for (i, &c) in a.into_iter().enumerate() {
+    for (i, &c) in a.iter().enumerate() {
         vec[p[i]] = c;
     }
 

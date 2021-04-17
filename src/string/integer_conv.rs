@@ -4,7 +4,7 @@ pub fn to_int(s: &str) -> i32 {
     }
 
     let mut n = 0i32;
-    let is_negative = s.chars().nth(0).unwrap() == '-';
+    let is_negative = s.starts_with('-');
     let s = if is_negative { &s[1..] } else { s };
 
     for (rad, c) in s.chars().rev().enumerate() {

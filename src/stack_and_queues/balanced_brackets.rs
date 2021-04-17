@@ -9,24 +9,15 @@ enum Bracket {
 
 impl Bracket {
     fn is_square(self) -> bool {
-        match self {
-            Square => true,
-            _ => false,
-        }
+        matches!(self, Square)
     }
 
     fn is_paren(self) -> bool {
-        match self {
-            Paren => true,
-            _ => false,
-        }
+        matches!(self, Paren)
     }
 
     fn is_curly(self) -> bool {
-        match self {
-            Curly => true,
-            _ => false,
-        }
+        matches!(self, Curly)
     }
 }
 

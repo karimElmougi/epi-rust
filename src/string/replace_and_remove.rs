@@ -19,11 +19,11 @@ pub fn replace_and_remove_in_place(s: &mut str, size: usize) {
     let bytes = unsafe { s.as_bytes_mut() };
 
     for i in (0..size).rev() {
-        if bytes[i] == 'a' as u8 {
+        if bytes[i] == b'a' {
             insertion_i -= 1;
-            bytes[insertion_i] = 'd' as u8;
+            bytes[insertion_i] = b'd';
             insertion_i -= 1;
-            bytes[insertion_i] = 'd' as u8;
+            bytes[insertion_i] = b'd';
         } else {
             insertion_i -= 1;
             bytes[insertion_i] = bytes[i];
@@ -36,7 +36,7 @@ pub fn remove_b(s: &mut [u8], size: usize) -> usize {
     let mut new_size = size;
 
     for i in 0..size {
-        if s[i] == 'b' as u8 {
+        if s[i] == b'b' {
             new_size -= 1;
         } else {
             s.swap(insertion_i, i);

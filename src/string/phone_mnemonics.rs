@@ -43,7 +43,7 @@ pub fn mnemonics_rec(phone_number: &str) -> Vec<String> {
             }
         }
 
-        return mnemonics;
+        mnemonics
     }
 }
 

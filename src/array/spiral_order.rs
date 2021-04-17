@@ -29,6 +29,7 @@ where
                 direction = South;
             }
             South => {
+                #[allow(clippy::clippy::needless_range_loop)]
                 for i in north_guard..=south_guard {
                     v.push(array[i][east_guard].clone());
                 }

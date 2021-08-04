@@ -13,10 +13,8 @@ pub fn buy_sell_stock_once(array: &[i32]) -> i32 {
         if price < minima {
             max_delta = max(max_delta, maxima - minima);
             minima = price;
-            maxima = price;
-        } else {
-            maxima = price;
         }
+        maxima = price;
     }
 
     max(max_delta, maxima - minima)

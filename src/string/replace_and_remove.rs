@@ -19,13 +19,12 @@ pub fn replace_and_remove_in_place(s: &mut str, size: usize) {
     let bytes = unsafe { s.as_bytes_mut() };
 
     for i in (0..size).rev() {
+        insertion_i -= 1;
         if bytes[i] == b'a' {
-            insertion_i -= 1;
             bytes[insertion_i] = b'd';
             insertion_i -= 1;
             bytes[insertion_i] = b'd';
         } else {
-            insertion_i -= 1;
             bytes[insertion_i] = bytes[i];
         }
     }
